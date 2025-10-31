@@ -1,0 +1,34 @@
+class employee():
+  empcount=0
+  incmt=1.10
+  def __init__(self,first,last,salary):
+    self.first=first
+    self.last=last
+    self.salary=salary
+    self.email=first.lower()+"."+last.lower()+"@quastech.com"
+    employee.empcount +=1
+  def fullname(self):
+    return f"{self.first.title()} {self.last.title()}"
+  def increment(self):
+    self.salary= int(self.salary *employee.incmt)
+
+class developer(employee):
+  def __init__(self,first,last,salary,prog_lang):
+    super().__init__(first,last,salary)
+    self.prog_lang=prog_lang
+class manager(employee):
+  def __init__(self,first,last,salary,Empl=None):
+    super().__init__(first,last,salary)
+    if(Empl is None):
+      self.Employee = []
+    else:
+      self.Employee = Empl
+  def addemp(self,Emp):
+    if Emp not in self.Employee:
+      self.Employee.append(Emp)
+  def removemp(self,username):
+    if username in self.Employee:
+      self.Employee.remove(username)
+  def print_emp(self):
+    for empl in self.Employee:
+      print(" -->",emp.fullname())
